@@ -1,0 +1,13 @@
+{% extends "_base.html" %}
+{% block title %}Event Detail{% endblock title %}
+{% block content %}
+<p>{{event.name}}</p>
+<p>{{event.description|safe}}</p>
+<p>${{event.get_display_price}}</p>
+
+<form action="" method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+    <a href=""><button class="btn btn-primary">Register</button></a>
+</form>
+{% endblock %}

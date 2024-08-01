@@ -1,0 +1,11 @@
+{% extends "_base.html" %}
+{% block title %}Events{% endblock title %}
+{% block content %}
+{% for event in event_list %}
+<h4>{{event.name}}  </h4>
+<p>{{event.short_descript|safe}}</p>
+<p>${{event.get_display_price}}</p>
+<a href="{% url 'event-detail' event.pk %}"><button class="btn btn-primary">More Info</button></a>
+
+{% endfor %}
+{% endblock %}

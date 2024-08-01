@@ -1,0 +1,29 @@
+{% extends "_base.html" %}
+{% block title %}Home{% endblock title %}
+{% block content %}
+<table class="table">
+    <tr>
+        <th>Class</th>
+        <th>Attendee</th>
+        <th>Price</th>
+        <th></th>
+    </tr>
+        {% for reg in registration %}
+    <tr>
+        <td>{{reg.event.name}}</td>
+        <td>{{reg.attendee}}</td>
+        <td>${{reg.event.get_display_price}}</td>
+        <td><a href="{% url 'event-delete' reg.pk %}">Delete</a></td>
+    </tr>
+    {% empty %}
+    <tr></tr>
+    <td><p>There are no items in your cart.</p></td>
+    <td></td>
+    <td></td>
+
+        {% endfor %}
+        
+</table>
+
+<a class="btn btn-primary" href="{% url 'checkout' %}">Checkout</a>
+{% endblock %}
